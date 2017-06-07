@@ -9,21 +9,22 @@
 #include <stdio.h>
 #include "layer1.h"
 #include <string>
+#include <android/log.h>
 
-using namespace std;
+#ifdef __cplusplus
+extern "C" {
+#endif
+typedef struct {
+    std::string (*getResponse)();
 
-class NetClientLayer2 {
-private:
-    std::string layer2 = "layer2:";
-public:
-    NetClientLayer2();
+    std::string (*getRequest)();
 
-    ~NetClientLayer2();
+} NET_API_FUNCTIONS_TYPE_LAYER2;
 
-    std::string getClientResponse();
+extern __attribute__ ((visibility ("default"))) NET_API_FUNCTIONS_TYPE_LAYER2 net_client_layer2;
 
-    std::string getClientRequest();
-
-};
+#ifdef __cplusplus
+}
+#endif
 
 #endif //CMAKEMUTISO_LAYER2_H

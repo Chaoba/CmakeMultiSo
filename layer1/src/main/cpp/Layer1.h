@@ -10,7 +10,7 @@
 #include <jni.h>
 #include <string>
 
-#define  LOG_E(...)  __android_log_print(ANDROID_LOG_ERROR,"LAYER1",__VA_ARGS__)
+#define  LOG_E(...)  __android_log_print(ANDROID_LOG_ERROR,"Netclient",__VA_ARGS__)
 
 #ifdef __cplusplus
 extern "C" {
@@ -20,9 +20,9 @@ typedef struct {
 
     std::string (*getRequest)();
 
-} NET_API_FUNCTIONS_TYPE;
+} NET_API_FUNCTIONS_TYPE_LAYER1;
 
-extern __attribute__ ((visibility ("default"))) NET_API_FUNCTIONS_TYPE net_client;
+extern __attribute__ ((visibility ("default"))) NET_API_FUNCTIONS_TYPE_LAYER1 net_client_layer1;
 
 #ifdef __cplusplus
 }

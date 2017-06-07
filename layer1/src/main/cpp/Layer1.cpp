@@ -5,15 +5,17 @@
 #include "Layer1.h"
 
 std::string get_response() {
-    return "Response from layer1";
+    LOG_E("layer1 get response");
+    return "layer1:Response";
 }
 
 std::string get_request() {
-    return "Request from layer1";
+    LOG_E("layer1 get request");
+    return "layer1:Request";
 }
 
 
-__attribute__ ((visibility ("default"))) NET_API_FUNCTIONS_TYPE net_client = {
+__attribute__ ((visibility ("default"))) NET_API_FUNCTIONS_TYPE_LAYER1 net_client_layer1 = {
         get_response,
         get_request,
 };
