@@ -4,6 +4,7 @@
 //
 #include <jni.h>
 #include <string>
+#include <Layer2.h>
 #include "../include/Layer2.h"
 
 extern "C"
@@ -20,5 +21,11 @@ Java_com_mushuichuan_cmakemutiso_MainActivity_responseStringFromJNI(JNIEnv *env,
     LOG_E("layer3 get response");
     std::string response = "Layer3:" + net_client_layer2.getResponse();
     return env->NewStringUTF(response.c_str());
+}
+
+JNIEXPORT void JNICALL
+Java_com_mushuichuan_cmakemutiso_MainActivity_init(JNIEnv *env, jobject instance) {
+    net_client_layer2.init();
+
 }
 }

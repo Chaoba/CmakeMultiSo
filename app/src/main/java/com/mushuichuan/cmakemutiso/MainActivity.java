@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        init();
         // Example of a call to a native method
         TextView tv = (TextView) findViewById(R.id.sample_text);
         tv.setText(requestStringFromJNI() + "\n" + responseStringFromJNI());
@@ -64,4 +65,5 @@ public class MainActivity extends AppCompatActivity {
     public native String requestStringFromJNI();
 
     public native String responseStringFromJNI();
+    public native void init();
 }

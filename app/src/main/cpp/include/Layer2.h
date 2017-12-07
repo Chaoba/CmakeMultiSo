@@ -19,6 +19,8 @@ typedef struct {
 
     std::string (*getRequest)();
 
+    void (*init)();
+
 } NET_API_FUNCTIONS_TYPE_LAYER2;
 
 extern __attribute__ ((visibility ("default"))) NET_API_FUNCTIONS_TYPE_LAYER2 net_client_layer2;
