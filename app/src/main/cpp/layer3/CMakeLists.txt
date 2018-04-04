@@ -5,4 +5,4 @@ set_target_properties(layer2sdk PROPERTIES IMPORTED_LOCATION "${jnilibs}/${ANDRO
 
 find_library( log-lib log )
 
-target_link_libraries(layer3 layer2 ${log-lib})
+target_link_libraries(layer3 layer2sdk ${log-lib})
