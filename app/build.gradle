@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 29
+    buildToolsVersion "29.0.0"
     defaultConfig {
         applicationId "com.mushuichuan.cmakemutiso"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
                 cppFlags "-DANDROID_STL=c++_static"
@@ -29,15 +29,22 @@ android {
             path "CMakeLists.txt"
         }
     }
+
+    packagingOptions {
+        pickFirst 'lib/arm64-v8a/liblayer3.so'
+        pickFirst 'lib/armeabi-v7a/liblayer3.so'
+        pickFirst 'lib/arm64-v8a/liblayer2.so'
+        pickFirst 'lib/armeabi-v7a/liblayer2.so'
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:design:25.3.1'
-    testCompile 'junit:junit:4.12'
+    api 'androidx.appcompat:appcompat:1.0.2'
+    api 'androidx.constraintlayout:constraintlayout:1.1.3'
+    api 'com.google.android.material:material:1.0.0'
+    testImplementation 'junit:junit:4.12'
 }
